@@ -4,7 +4,9 @@
       <h3>Simple map</h3>
       <p>First marker is placed at {{ withPopup.lat }}, {{ withPopup.lng }}</p>
       <p>Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }}</p>
-      <button @click="showLongText">Toggle long popup</button>
+      <button @click="showLongText">
+        Toggle long popup
+      </button>
     </div>
     <l-map
       :zoom="zoom"
@@ -14,7 +16,10 @@
       @update:center="centerUpdate"
       @update:zoom="zoomUpdate"
     >
-      <l-tile-layer :url="url" :attribution="attribution" />
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
       <l-marker :lat-lng="withPopup">
         <l-popup>
           <div @click="innerClick">
@@ -44,11 +49,11 @@
 </template>
 
 <script>
-import { latLng } from "leaflet";
-import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from "vue2-leaflet";
+import { latLng } from 'leaflet';
+import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from 'vue2-leaflet';
 
 export default {
-  name: "Example",
+  name: 'SimpleExample',
   components: {
     LMap,
     LTileLayer,
@@ -56,11 +61,11 @@ export default {
     LPopup,
     LTooltip
   },
-  data() {
+  data () {
     return {
       zoom: 13,
       center: latLng(47.41322, -1.219482),
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       withPopup: latLng(47.41322, -1.219482),
@@ -74,17 +79,17 @@ export default {
     };
   },
   methods: {
-    zoomUpdate(zoom) {
+    zoomUpdate (zoom) {
       this.currentZoom = zoom;
     },
-    centerUpdate(center) {
+    centerUpdate (center) {
       this.currentCenter = center;
     },
-    showLongText() {
+    showLongText () {
       this.showParagraph = !this.showParagraph;
     },
-    innerClick() {
-      alert("Click!");
+    innerClick () {
+      alert('Click!');
     }
   }
 };

@@ -12,7 +12,8 @@
     "core-js": "^2.6.5",
     "leaflet": "^1.4.0",
     "leaflet.icon.glyph": "^0.2.1",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",

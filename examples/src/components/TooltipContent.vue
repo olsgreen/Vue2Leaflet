@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "TooltipContent",
+  name: 'TooltipContent',
   props: {
     data: {
       type: Object,

@@ -7,15 +7,15 @@
 
 <script>
 export default {
-  name: "GeoJson2Popup",
+  name: 'GeoJson2Popup',
   props: {
     type: {
       type: String,
-      default: ""
+      default: ''
     },
     text: {
       type: String,
-      default: ""
+      default: ''
     }
   }
 };

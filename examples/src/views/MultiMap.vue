@@ -12,7 +12,11 @@
       :max-zoom="maxZoom"
       style="height: 45%"
     >
-      <l-tile-layer :url="url" :attribution="attribution" :token="token" />
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+        :token="token"
+      />
       <l-marker
         v-for="item in markers"
         :key="item.id"
@@ -59,7 +63,11 @@
       :max-zoom="maxZoom"
       style="height: 45%"
     >
-      <l-tile-layer :url="url" :attribution="attribution" :token="token" />
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+        :token="token"
+      />
       <l-marker
         v-for="item in markers"
         :key="item.id"
@@ -101,14 +109,14 @@
 </template>
 
 <script>
-import { latLng, latLngBounds } from "leaflet";
+import { latLng, latLngBounds } from 'leaflet';
 import {
   LMap,
   LTileLayer,
   LMarker,
   LPolyline,
   LLayerGroup
-} from "vue2-leaflet";
+} from 'vue2-leaflet';
 
 var markers1 = [
   {
@@ -168,7 +176,7 @@ var poly1 = [
 var corner1 = latLng(40.712, -74.227);
 var corner2 = latLng(40.774, -74.125);
 export default {
-  name: "MultiMap",
+  name: 'MultiMap',
   components: {
     LMap,
     LTileLayer,
@@ -176,7 +184,7 @@ export default {
     LPolyline,
     LLayerGroup
   },
-  data() {
+  data () {
     return {
       zoom: 13,
       center: { lat: 51.505, lng: -0.09 },
@@ -184,33 +192,33 @@ export default {
       minZoom: 1,
       maxZoom: 20,
       opacity: 0.6,
-      option1: { name: "1" },
-      option2: { name: "2" },
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      option1: { name: '1' },
+      option2: { name: '2' },
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      token: "your token if using mapbox",
+      token: 'your token if using mapbox',
       markers: [
         {
-          id: "m1",
+          id: 'm1',
           position: { lat: 51.505, lng: -0.09 },
           draggable: true,
           visible: true
         },
         {
-          id: "m2",
+          id: 'm2',
           position: { lat: 51.8905, lng: -0.09 },
           draggable: true,
           visible: false
         },
         {
-          id: "m3",
+          id: 'm3',
           position: { lat: 51.005, lng: -0.09 },
           draggable: true,
           visible: true
         },
         {
-          id: "m4",
+          id: 'm4',
           position: { lat: 50.7605, lng: -0.09 },
           draggable: true,
           visible: false
@@ -218,7 +226,7 @@ export default {
       ],
       polylines: [
         {
-          id: "p1",
+          id: 'p1',
           points: [
             { lat: 37.772, lng: -122.214 },
             { lat: 21.291, lng: -157.821 },
@@ -228,7 +236,7 @@ export default {
           visible: true
         },
         {
-          id: "p2",
+          id: 'p2',
           points: [[-73.91, 40.78], [-87.62, 41.83], [-96.72, 32.76]],
           visible: true
         }
@@ -244,8 +252,8 @@ export default {
     };
   },
   methods: {
-    alert(item) {
-      alert("this is " + JSON.stringify(item));
+    alert (item) {
+      alert('this is ' + JSON.stringify(item));
     }
   }
 };

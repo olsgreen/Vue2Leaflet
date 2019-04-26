@@ -4,7 +4,7 @@
       <h3>Set Bounds</h3>
       Marker is placed at {{ marker.lat }}, {{ marker.lng }}, bounds are
       {{ bounds }}
-      <br />
+      <br>
     </div>
     <l-map
       :zoom="zoom"
@@ -13,24 +13,27 @@
       :max-bounds="maxBounds"
       style="height: 90%"
     >
-      <l-tile-layer :url="url" :attribution="attribution" />
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
       <l-marker :lat-lng="marker" />
     </l-map>
   </div>
 </template>
 
 <script>
-import { latLngBounds, latLng } from "leaflet";
-import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+import { latLngBounds, latLng } from 'leaflet';
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 export default {
-  name: "SetBounds",
+  name: 'SetBounds',
   components: {
     LMap,
     LTileLayer,
     LMarker
   },
-  data() {
+  data () {
     return {
       zoom: 13,
       center: [0, 0],
@@ -42,7 +45,7 @@ export default {
         [40.70081290280357, -74.26963806152345],
         [40.82991732677597, -74.08716201782228]
       ]),
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       marker: latLng(47.41322, -1.219482)

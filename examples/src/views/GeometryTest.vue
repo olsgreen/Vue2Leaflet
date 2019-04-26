@@ -1,62 +1,62 @@
 <template>
   <div>
     <div style="height: 10%; overflow: auto;">
-      <h3>Geometry with popups</h3>
+      <h3>Geometry</h3>
+      <button @click="clickBtn">
+        Change rectange style
+      </button>
     </div>
-    <l-map :zoom="zoom" :center="center" style="height: 90%">
-      <l-tile-layer :url="url" :attribution="attribution" />
-      <l-circle :lat-lng="circle.center" :radius="circle.radius">
-        <l-popup content="Circle" />
-      </l-circle>
-      <l-rectangle :bounds="rectangle.bounds" :color="rectangle.color">
-        <l-popup content="Rectangle" />
-      </l-rectangle>
-      <l-polygon :lat-lngs="polygon.latlngs" :color="polygon.color">
-        <l-popup content="Polygon" />
-      </l-polygon>
-      <l-polyline :lat-lngs="polyline.latlngs" :color="polyline.color">
-        <l-popup>
-          <popup-content :data="polyline" />
-        </l-popup>
-        <l-tooltip>
-          <tooltip-content :data="polyline" />
-        </l-tooltip>
-      </l-polyline>
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 90%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
+      <l-circle
+        :lat-lng="circle.center"
+        :radius="circle.radius"
+      />
+      <l-rectangle
+        :bounds="rectangle.bounds"
+        :l-style="rectangle.style"
+      />
+      <l-polygon
+        :lat-lngs="polygon.latlngs"
+        :color="polygon.color"
+      />
+      <l-polyline
+        :lat-lngs="polyline.latlngs"
+        :color="polyline.color"
+      />
     </l-map>
   </div>
 </template>
 
 <script>
+import { latLng } from 'leaflet';
 import {
   LMap,
   LTileLayer,
   LCircle,
   LRectangle,
   LPolygon,
-  LPolyline,
-  LPopup,
-  LTooltip
-} from "vue2-leaflet";
-import { latLng } from "leaflet";
-
-import PopupContent from "./PopupContent";
-import TooltipContent from "./TooltipContent";
+  LPolyline
+} from 'vue2-leaflet';
 
 export default {
-  name: "PopupGeometryTest",
+  name: 'GeometryTest',
   components: {
     LMap,
     LTileLayer,
     LCircle,
     LRectangle,
     LPolygon,
-    LPolyline,
-    LPopup,
-    LTooltip,
-    TooltipContent,
-    PopupContent
+    LPolyline
   },
-  data() {
+  data () {
     return {
       zoom: 11,
       center: [47.31322, -1.319482],
@@ -66,7 +66,7 @@ export default {
       },
       rectangle: {
         bounds: [[47.341456, -1.397133], [47.303901, -1.243813]],
-        color: "red"
+        style: { color: 'red', weight: 5 }
       },
       polygon: {
         latlngs: [
@@ -91,22 +91,28 @@ export default {
           [47.237287, -1.6266632],
           [47.2263299, -1.6222]
         ],
-        color: "#ff00ff"
+        color: '#ff00ff'
       },
       polyline: {
-        type: "polyline",
         latlngs: [
           [47.334852, -1.509485],
           [47.342596, -1.328731],
           [47.241487, -1.190568],
           [47.234787, -1.358337]
         ],
-        color: "green"
+        color: 'green'
       },
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     };
+  },
+  methods: {
+    clickBtn () {
+      this.rectangle.style.weight++;
+      this.rectangle.style.color =
+        this.rectangle.style.weight % 2 === 0 ? 'blue' : 'green';
+    }
   }
 };
 </script>
