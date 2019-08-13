@@ -63,8 +63,10 @@ export default {
 
       if (this.embedMethod === 'use') {
         svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svgElement.setAttribute('viewBox', this.viewBox);
-        svgElement.innerHTML = '<use xlink:href="' + this.url + '#g4"></use>';
+        if (this.viewBox) {
+          svgElement.setAttribute('viewBox', this.viewBox);
+        }
+        svgElement.innerHTML = '<use xlink:href="' + this.url + '"></use>';
         return svgElement;
       }
 
